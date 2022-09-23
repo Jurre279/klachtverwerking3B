@@ -31,7 +31,7 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Klachtverwerking';
+    $mail->Subject = 'Uw klacht is in behandeling';
     $mail->Body    = $_POST['bericht'];
 
     $mail->send();
