@@ -41,7 +41,7 @@ try {
 
     // logs userdata
     $logger = new Logger('info');
-    $logger->pushHandler(new StreamHandler(__DIR__ . '/info.log', Level::warning));
+    $logger->pushHandler(new StreamHandler(__DIR__ . '/info.log', Level::Debug));
     $logger->info('user data:', ['name' => $_POST['Naam'], 'emailaddress' => $_POST['Email'], 'description' => $_POST['bericht']]);
 
     $mail->send();
