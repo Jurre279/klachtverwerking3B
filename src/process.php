@@ -8,11 +8,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-//monolog
-use Monolog\Level;
-use Monolog\Logger;
-use Monolog\Handler\StreamHandler;
-
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 include 'prive.php';
@@ -38,11 +33,6 @@ try {
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Uw klacht is in behandeling';
     $mail->Body    = $_POST['bericht'];
-
-    // logs userdata
-    $logger = new Logger('info');
-    $logger->pushHandler(new StreamHandler(__DIR__ . '/info.log', Level::Debug));
-    $logger->info('user data:', ['name' => $_POST['Naam'], 'emailaddress' => $_POST['Email'], 'description' => $_POST['bericht']]);
 
     $mail->send();
     echo 'Message has been sent';
